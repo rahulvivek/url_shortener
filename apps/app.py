@@ -3,18 +3,17 @@ import os
 from flask import Flask
 from flask_pymongo import PyMongo
 
+mongo = PyMongo()
+
 def create_app():
     app = Flask(__name__)
 
-    mongo = PyMongo()
-    
+    # Configuring MongoDB
     app.config["MONGO_URI"] = os.environ["MONGO_URI"]
-
     mongo.init_app(app)
 
-
-    @app.route("/health_check")
-    def health_check():
-        return "Ok"
+    # Adding blueprint
+    from apps.url_shortener.controller import url_shortener
+    app.register_blueprint(url_shortener)
 
     return app

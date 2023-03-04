@@ -4,7 +4,7 @@ services:
     build: .
     environment:
       - SECRET_KEY_BASE=secret
-      - MONGO_URI=mongodb://root:Secret@mongo:27017/url_shortner
+      - MONGO_URI=mongodb://root:Secret@mongo:27017/url_shortner?authSource=admin
     ports:
     - "8000:8000"
     volumes:

@@ -30,7 +30,6 @@ def shorten_url():
 
     # Generate a random code
     code = get_code(6)
-
     
     # checking the random code already present in the
     # DB, if yes, regenerate code.
